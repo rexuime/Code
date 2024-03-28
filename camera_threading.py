@@ -1,18 +1,23 @@
 import time
 import threading
 import cv2
-# pip install pyserial
 import serial
-from sideClass import cubeSide
+import numpy as np
+from cubeClasses import cubeSide
+from cubeClasses import sideSquare
 
-# Global matrix for current state of cube which will be modified by threads
-# May need fine locking to prevent threads from accessing same value of matrix
-# lock = threading.Lock()
-# with lock:
-cubeMatrix = []
+'''
+    Global matrix for current state of cube which will be modified by threads
+    May need fine locking to prevent threads from accessing same value of matrix
+    Would have to create a separate class/structure for a single square
+    Each square would include its value and a lock
+    Would then be a matrix of side objects that have square objects as the data
+    lock = threading.Lock()
+    with lock:
+'''
 
-# Array for if we use class for sides
-# sides = []
+# Global array side objects 
+sides = []
 
 # Global variable to check if cube is solved
 isSolved = False
@@ -32,16 +37,11 @@ def setUp():
     t2 = threading.Thread(target = p2)
     threads.append(t2)
 
-    # cubeMatrix initialization
-    global cubeMatrix
-    cubeMatrix = [[[0 for i in range(3)] for j in range(3)] for k in range(6)]
-
-    # If we want to use a cubeSide class, the code for that is below
-    """
+    # sides list initialization
+    global sides
     for i in range(6):
-        side = cubeSide(i)
-        sides.append(side)
-    """
+        sides.append(cubeSide(i))
+
 
 # function to start threads and read the cube/modify global matrix
 def readCube():
@@ -60,13 +60,13 @@ def readCube():
 # function for thread1 to do work for camera1/modify matrix
 def p1():
 
-    # global "matrix"
+    # modify squareSide objects
     return
     
 # function for thread2 to do work for camera2/modify matrix
 def p2():
 
-    # global "matrix"
+    # modify squareSide objects
     return
 
 # function to decode matrix into move for motors
@@ -74,6 +74,11 @@ def decode():
 
     # return data which will be used in sendData function
     return  
+
+# function to auto scramble cube when chosen as scramble option
+def scramble():
+
+    return
 
 # function to communicate with Arduino to turn motors 
 # argument includes returned value from decode
@@ -90,6 +95,13 @@ def finish():
 if __name__ == "__main__":
 
     setUp()
+
+    # Add something to wait until we want to start 
+    # When done solving, must come back and wait again
+
+    # If manual scramble, use sendData
+    # If auto scramble, use scramble function
+
 
     if isSolved:
         finish()
