@@ -1,6 +1,8 @@
 import time
 import threading
 import cv2
+# pip install pyserial
+import serial
 from sideClass import cubeSide
 
 # Global matrix for current state of cube which will be modified by threads
