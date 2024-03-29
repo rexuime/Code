@@ -75,14 +75,20 @@ def decode():
     # return data which will be used in sendData function
     return  
 
-# function to auto scramble cube when chosen as scramble option
-def scramble():
-
-    return
-
 # function to communicate with Arduino to turn motors 
 # argument includes returned value from decode
 def sendData():
+
+    return
+
+# function to send directions to arduino to manually scramble cube
+# take inputs from user using GUI
+def man_scramble():
+
+    return
+
+# function to send directions to arduino to auto scramble cube
+def auto_scramble():
 
     return
 
@@ -99,8 +105,8 @@ if __name__ == "__main__":
     # Add something to wait until we want to start 
     # When done solving, must come back and wait again
 
-    # If manual scramble, use sendData
-    # If auto scramble, use scramble function
+    # Auto or Manual Scramble? 
+    # Use man_scramble and auto_scramble functions accordingly
 
 
     if isSolved:
