@@ -5,8 +5,8 @@ class sideSquare:
 
     # Square has a lock to have safe resource sharing and data value
     def __init__(self):
-        self.value = 0
-        self.lock = threading.Lock()
+        self.value = 'X'
+        #self.lock = threading.Lock()
 
     # Setter for value
     def setVal(self, val):
@@ -38,8 +38,10 @@ class cubeSide:
     def printSide(self):
         print("Side " + str(self.sideNumber) + ":")
         for row in self.matrix:
+            print("[",end="")
             for j in row:
-                print(j.getVal())
+                print(j.getVal(),end="")
+            print("]")
 
 """
 

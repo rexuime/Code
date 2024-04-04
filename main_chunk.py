@@ -1,6 +1,7 @@
 import time
 import threading
 import cv2
+import serial
 import numpy as np
 from cubeClasses import cubeSide
 from cubeClasses import sideSquare
@@ -18,23 +19,14 @@ from cubeClasses import sideSquare
 # Global array side objects 
 sides = []
 
+# Global variable to check if cube is solved
+isSolved = False
+
 # Global variable to wait until Arduino is done turning motors
 arduinoIsRunning = False
 
 # Global variable to hold all threads
 threads = []
-
-# Global dictionary of colors
-colors = {"green":'g',
-          "red":'r',
-          "blue":'b',
-          "white":'w',
-          "yellow":'y',
-          "orange":'o'}
-
-# OpenCV objects for cameras, find port values
-cam1 = cv2.VideoCapture(0)
-cam2 = cv2.VideoCapture(1)
 
 def setUp():
 
@@ -68,26 +60,12 @@ def readCube():
 # function for thread1 to do work for camera1/modify matrix
 def p1():
 
-    # Read colors 
-    while True:
-        # Capture a frame
-        ret, frame = cam1.read()
-
-        break
-
     # modify squareSide objects
     return
     
 # function for thread2 to do work for camera2/modify matrix
 def p2():
 
-    # Read colors
-    while True:
-        # Capture a frame
-        ret, frame = cam2.read()
-
-        break
-    
     # modify squareSide objects
     return
 
@@ -97,13 +75,41 @@ def decode():
     # return data which will be used in sendData function
     return  
 
+# function to communicate with Arduino to turn motors 
+# argument includes returned value from decode
+def sendData():
+
+    return
+
+# function to send directions to arduino to manually scramble cube
+# take inputs from user using GUI
+def man_scramble():
+
+    return
+
+# function to send directions to arduino to auto scramble cube
+def auto_scramble():
+
+    return
+
+# function to finish things up when cube is solved
+def finish():
+
+    return
+
 
 if __name__ == "__main__":
 
     setUp()
 
-    readCube()
+    # Add something to wait until we want to start 
+    # When done solving, must come back and wait again
 
-    # Release the VideoCapture object
-    cam1.release()
-    cam2.release()
+    # Auto or Manual Scramble? 
+    # Use man_scramble and auto_scramble functions accordingly
+
+
+    if isSolved:
+        finish()
+
+    readCube()
