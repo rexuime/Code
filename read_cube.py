@@ -27,32 +27,31 @@ def hsv_to_color(hsv):
     h,s,v = hsv
     
     # Define HSV ranges
-    # Don't pay attention to the variable names, these are HSV ranges
-    red_rgb_ranges = [range(170, 180),range(50,255),range(100,255)]
-    orange_rgb_ranges = [range(0,15),range(80,255),range(100,255)]
-    yellow_rgb_ranges = [range(25,46),range(50,255),range(100,255)]
-    green_rgb_ranges = [range(60,77),range(50,255),range(100,255)]
-    blue_rgb_ranges = [range(86,115),range(50,255),range(100,255)]
-    white_rgb_ranges = [range(0,70),range(0,70),range(100,255)]
+    red_hsv_ranges = [range(170, 180),range(50,255),range(100,255)]
+    orange_hsv_ranges = [range(0,15),range(80,255),range(100,255)]
+    yellow_hsv_ranges = [range(25,46),range(50,255),range(100,255)]
+    green_hsv_ranges = [range(60,77),range(50,255),range(100,255)]
+    blue_hsv_ranges = [range(86,115),range(50,255),range(100,255)]
+    white_hsv_ranges = [range(0,70),range(0,70),range(100,255)]
 
-    # Check if the RGB value falls within the defined color ranges
+    # Check if the HSV value falls within the defined color ranges
     #Red
-    if h in red_rgb_ranges[0] and s in red_rgb_ranges[1] and v in red_rgb_ranges[2]:
+    if h in red_hsv_ranges[0] and s in red_hsv_ranges[1] and v in red_hsv_ranges[2]:
         return 'F'
     #Orange
-    elif h in orange_rgb_ranges[0] and s in orange_rgb_ranges[1] and v in orange_rgb_ranges[2]:
+    elif h in orange_hsv_ranges[0] and s in orange_hsv_ranges[1] and v in orange_hsv_ranges[2]:
         return 'B'
     #Yellow
-    elif h in yellow_rgb_ranges[0] and s in yellow_rgb_ranges[1] and v in yellow_rgb_ranges[2]:
+    elif h in yellow_hsv_ranges[0] and s in yellow_hsv_ranges[1] and v in yellow_hsv_ranges[2]:
         return 'U'
     #Green
-    elif h in green_rgb_ranges[0] and s in green_rgb_ranges[1] and v in green_rgb_ranges[2]:
+    elif h in green_hsv_ranges[0] and s in green_hsv_ranges[1] and v in green_hsv_ranges[2]:
         return 'R'
     #Blue
-    elif h in blue_rgb_ranges[0] and s in blue_rgb_ranges[1] and v in blue_rgb_ranges[2]:
+    elif h in blue_hsv_ranges[0] and s in blue_hsv_ranges[1] and v in blue_hsv_ranges[2]:
         return 'L'
     #White
-    elif h in white_rgb_ranges[0] and s in white_rgb_ranges[1] and v in white_rgb_ranges[2]:
+    elif h in white_hsv_ranges[0] and s in white_hsv_ranges[1] and v in white_hsv_ranges[2]:
         return 'D'
     else:
         return 'D'
